@@ -19,5 +19,7 @@ COPY . .
 # Expose the application port
 EXPOSE 3000
 
+EXPOSE 5001
+
 # Command to run the app using PM2
 CMD ["pm2-runtime", "start", "server.js", "--name", "books-app"]

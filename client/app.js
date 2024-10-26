@@ -50,7 +50,10 @@ getBtn.addEventListener("click", (e) => {
     body: JSON.stringify(graphqlQuery),
   };
 
-  fetch("http://localhost:5000/graphql", options)
+  fetch(
+    "http://http://ec2-3-110-214-191.ap-south-1.compute.amazonaws.com:5001/graphql",
+    options
+  )
     .then((res) => res.json())
     .then((data) => content(data.data));
 
