@@ -4,7 +4,7 @@ pipeline {
 	environment {
         NVM_DIR = "/home/ec2-user/.nvm"  // Adjust based on your user directory
         PATH = "${NVM_DIR}/versions/node/v16.20.2/bin:${env.PATH}"
-          IMAGE_NAME = "node:16.0.0-appline"  // Replace with your image name
+        IMAGE_NAME = "node:16.0.0-appline"  // Replace with your image name
         CONTAINER_NAME = "books-app"  // Container name for running your app
     }
     stages {

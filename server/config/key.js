@@ -1,5 +1,4 @@
-mongoConnect =
-  "mongodb+srv://sudheer5:sudheerbannu@maincluster.cy3f0xm.mongodb.net";
+mongoConnect = "<MONGODB_CONNECT_URL>";
 
 module.exports = {
   mongoConnectURI: mongoConnect,
