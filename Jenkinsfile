@@ -1,6 +1,10 @@
 pipeline {
     agent any	
     tools {nodejs "nodejs"}
+	environment {
+        NVM_DIR = "/home/ec2-user/.nvm"  // Adjust based on your user directory
+        PATH = "${NVM_DIR}/versions/node/v16.20.2/bin:${env.PATH}"
+    }
     stages {
         stage('Build') {
             steps {
