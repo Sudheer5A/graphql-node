@@ -6,9 +6,9 @@ const content = (data) => {
     ? data.books.map((item) => {
         let contentBox = `
         <div class="info-box">
-            <img src="${item.imgUrl}" alt="" />
-            <h3>${item.name}</h3>
-            <p>${item.author.name}</p>
+            <img src="${item?.imgUrl}" alt="" />
+            <h3>${item?.name}</h3>
+            <p>${item?.author.name}</p>
         </div>
     `;
 
@@ -17,8 +17,8 @@ const content = (data) => {
     : data.authors.map((item) => {
         let contentBox = `
         <div class="info-box">
-            <img src="${item.imgUrl}" alt="" />
-            <h3>${item.name}</h3>
+            <img src="${item?.imgUrl}" alt="" />
+            <h3>${item?.name}</h3>
         </div>
     `;
 
