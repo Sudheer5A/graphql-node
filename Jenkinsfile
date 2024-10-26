@@ -19,6 +19,7 @@ pipeline {
                 // If app is not running, start it; if running, restart it
                 sh '''
                 sudo cd /home/ec2-user/app
+		sudo pm2 start server.js --name "books-app" || sudo pm2 restart "books-app"
                 '''
             }
         }
