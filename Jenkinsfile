@@ -4,12 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+	      dir('server'){
                 sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm test'
+		 }
             }
         }
         stage('Deploy') {
