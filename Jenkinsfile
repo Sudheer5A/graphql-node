@@ -31,7 +31,7 @@ pipeline {
 
                     // Run a new container from the built image using PM2
                     sh '''
-                    docker run -d --name ${CONTAINER_NAME} -p 3000:3000 ${IMAGE_NAME}
+                    docker run -d --name ${CONTAINER_NAME} -p 3000:3000 -p 5001:5001 ${IMAGE_NAME}
                     '''
             }
         }
