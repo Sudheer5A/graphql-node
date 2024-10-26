@@ -51,7 +51,7 @@ getBtn.addEventListener("click", (e) => {
   };
 
   fetch(
-    "http://http://ec2-3-110-214-191.ap-south-1.compute.amazonaws.com:5001/graphql",
+    "http://ec2-3-110-214-191.ap-south-1.compute.amazonaws.com:5001/graphql",
     options
   )
     .then((res) => res.json())
