@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const db = mongoClient.connect(mongoConnectURI).then((res) => res.db("store"));
+const db = mongoClient.connect(mongoConnectURI).then((res) => res.db("books"));
 
 let books = db.then((res) => res.collection("books").find().toArray());
 let authors = db.then((res) => res.collection("authors").find().toArray());
