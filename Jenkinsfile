@@ -12,8 +12,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Copy files to the deployment directory
-				sh 'sudo cp -r ./client/* /usr/share/nginx/html'
-                sh 'sudo cp -r ./server/* /app'
+		sh 'sudo cp -r ./client/* /usr/share/nginx/html'
+                sh 'sudo cp -r ./server/* app'
 
                 // Use PM2 to restart the app
                 // If app is not running, start it; if running, restart it
