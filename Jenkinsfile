@@ -23,6 +23,9 @@ pipeline {
                 // If app is not running, start it; if running, restart it
                 sh '''
                 sudo cd /home/ec2-user/app
+		export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # Load nvm
+                nvm use 16  # Ensure Node.js 16 is used
 		sudo /home/ec2-user/.nvm/versions/node/v16.20.2/bin/pm2 start server.js --name "books-app" || sudo /home/ec2-user/.nvm/versions/node/v16.20.2/bin/pm2 restart "books-app"
                 '''
             }
