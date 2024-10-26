@@ -1,28 +1,39 @@
 pipeline {
     agent any
+    
+    environment {
+        // Define your Docker image name
+        IMAGE_NAME = "node:16.0.0-alpine"  // Replace with your image name
+        CONTAINER_NAME = "books-app"  // Container name for running your app
+    }
+    
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm test'
+                script {
+                    // Build the Docker image
+                    sh '''
+                    docker build -t ${IMAGE_NAME} -f Dockerfile .
+                    '''
+                }
             }
         }
         stage('Deploy') {
             steps {
-                // Copy files to the deployment directory
-				sh 'cp -r ./client/* /usr/share/nginx/html'
-                sh 'cp -r ./server/* /app'
+                script {
+                    // Stop and remove the existing container if it's running
+                    sh '''
+                    if [ "$(docker ps -q -f name=${CONTAINER_NAME})" ]; then
+                        docker stop ${CONTAINER_NAME}
+                        docker rm ${CONTAINER_NAME}
+                    fi
+                    '''
 
-                // Use PM2 to restart the app
-                // If app is not running, start it; if running, restart it
-                sh '''
-                cd /app
-                pm2 start server.js --name "books-app" || pm2 restart "books-app"
-                '''
+                    // Run a new container from the built image using PM2
+                    sh '''
+                    docker run -d --name ${CONTAINER_NAME} -p 3000:3000 -p 5001:5001 ${IMAGE_NAME}
+                    '''
+                }
             }
         }
     }
